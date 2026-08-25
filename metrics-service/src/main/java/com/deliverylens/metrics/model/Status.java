@@ -1,7 +1,7 @@
-package com.deliverylens.project.entity;
+package com.deliverylens.metrics.model;
 
 public enum Status {
-    TO_DO,
+TO_DO,
     IN_PROGRESS,
     BLOCKED,
     DONE
