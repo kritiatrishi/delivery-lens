@@ -5,7 +5,6 @@ import com.deliverylens.project.entity.Story;
 import com.deliverylens.project.repository.StoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.deliverylens.project.entity.Sprint;
 
 import java.util.List;
 

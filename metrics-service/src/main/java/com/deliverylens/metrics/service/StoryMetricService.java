@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StoryMetricService {
     private final StoryMetricRepository repository;
+
     public StoryMetric createStory(StoryMetric storyMetric) {
 
         if (storyMetric.getStatus() == null) {
@@ -25,5 +26,12 @@ public class StoryMetricService {
         return repository.findBySprintId(sprintId);
     }
 
+    public StoryMetric updateStory(Long id, Status status) {
+        StoryMetric story = repository.findById(id).orElseThrow(() -> new RuntimeException("Story Not Found"));
+//        story.setTitle(updatedStory.getTitle());
+        story.setStatus(status);
+        return repository.save(story);
+
+    }
 
 }
