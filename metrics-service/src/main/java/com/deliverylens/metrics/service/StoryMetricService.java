@@ -33,5 +33,8 @@ public class StoryMetricService {
         return repository.save(story);
 
     }
+    public StoryMetric save(StoryMetric metric){
+        return repository.save(metric);
+    }
 
 }
