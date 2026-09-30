@@ -4,6 +4,8 @@ public class StoryStatusChangedEvent {
     private Long storyId;
 
     private Long sprintId;
+    private Integer storyPoints;
+
     private String oldStatus;
     private String newStatus;
 
@@ -26,6 +28,14 @@ public class StoryStatusChangedEvent {
 
     public void setSprintId(Long sprintId) {
         this.sprintId = sprintId;
+    }
+
+    public Integer getStoryPoints() {
+        return storyPoints;
+    }
+
+    public void setStoryPoints(Integer storyPoints) {
+        this.storyPoints = storyPoints;
     }
 
     public String getOldStatus() {
