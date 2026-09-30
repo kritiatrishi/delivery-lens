@@ -34,10 +34,10 @@ public class StoryService {
     public Story updateStatus(Long id, Status status) {
 
         Story story = repository.findById(id).orElseThrow(() -> new RuntimeException("Story Not Found"));
-        Status oldStatus=story.getStatus();
+        Status oldStatus = story.getStatus();
         story.setStatus(status);
-        Story updatedStory=repository.save(story);
-        StoryStatusChangedEvent event=new StoryStatusChangedEvent(updatedStory.getId(), updatedStory.getSprintId(),oldStatus!=null? oldStatus.name():null,updatedStory.getStatus().name());
+        Story updatedStory = repository.save(story);
+        StoryStatusChangedEvent event = new StoryStatusChangedEvent(updatedStory.getId(), updatedStory.getSprintId(), updatedStory.getStoryPoints(), oldStatus != null ? oldStatus.name() : null, updatedStory.getStatus().name());
         storyEventProducer.publishStatusChanged(event);
         return updatedStory;
 //        return repository.save(story);
