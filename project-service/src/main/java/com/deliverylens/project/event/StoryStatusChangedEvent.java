@@ -57,10 +57,12 @@ public class StoryStatusChangedEvent {
     public StoryStatusChangedEvent(
             Long storyId,
             Long sprintId,
+            Integer storyPoints,
             String oldStatus,
             String newStatus) {
         this.storyId = storyId;
         this.sprintId = sprintId;
+        this.storyPoints = storyPoints;
         this.oldStatus = oldStatus;
         this.newStatus = newStatus;
 
