@@ -1,6 +1,7 @@
 package com.deliverylens.metrics.service;
 
 
+import com.deliverylens.metrics.dto.SprintSummary;
 import com.deliverylens.metrics.model.Status;
 import com.deliverylens.metrics.model.StoryMetric;
 import com.deliverylens.metrics.repository.StoryMetricRepository;
@@ -33,8 +34,18 @@ public class StoryMetricService {
         return repository.save(story);
 
     }
-    public StoryMetric save(StoryMetric metric){
+
+    public StoryMetric save(StoryMetric metric) {
         return repository.save(metric);
+    }
+
+    public SprintSummary getSprintSummary(Long sprintId) {
+        List<StoryMetric> stories = repository.findBySprintId(sprintId);
+        int totalStories = stories.size();
+        int completedStories = (int) stories.stream().filter(storyMetric -> storyMetric.getStatus() == Status.DONE).count();
+        double completionRate = totalStories == 0 ? 0.0 : (completedStories * 100.0) / totalStories;
+        return new SprintSummary(sprintId, totalStories, completedStories, completionRate);
+
     }
 
 }
