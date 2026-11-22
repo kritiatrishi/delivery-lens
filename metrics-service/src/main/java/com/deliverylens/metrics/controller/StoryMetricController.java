@@ -1,5 +1,6 @@
 package com.deliverylens.metrics.controller;
 
+import com.deliverylens.metrics.dto.SprintSummary;
 import com.deliverylens.metrics.model.Status;
 import com.deliverylens.metrics.model.StoryMetric;
 import com.deliverylens.metrics.repository.StoryMetricRepository;
@@ -27,5 +28,10 @@ public class StoryMetricController {
     @PatchMapping("/{id}/status")
     public StoryMetric updateStoryMetric(@PathVariable Long id, @RequestParam Status status){
         return service.updateStory(id,status);
+    }
+
+    @GetMapping("/sprint/{sprintId}/summary")
+    public SprintSummary getSprintSummary(@PathVariable Long sprintId){
+        return service.getSprintSummary(sprintId);
     }
 }
